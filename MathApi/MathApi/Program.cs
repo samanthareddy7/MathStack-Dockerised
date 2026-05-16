@@ -48,8 +48,10 @@ if (app.Environment.IsDevelopment())
    app.UseSwaggerUI(); 
 }
 
-app.UseHttpsRedirection();
-
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 // UseAuthentication MUST come before UseAuthorization
 app.UseAuthentication(); 
 app.UseAuthorization();
