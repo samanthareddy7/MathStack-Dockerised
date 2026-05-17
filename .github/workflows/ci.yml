@@ -46,7 +46,7 @@ jobs:
           context: ./db
           file: ./db/Dockerfile
           push: true
-          tags: ghcr.io/${{ ... env.owner_lc || steps.vars.outputs.owner_lc }}/mathstack-db:latest
+          tags: ghcr.io/${{ steps.vars.outputs.owner_lc }}/mathstack-db:latest
 
       - name: Build and push API
         uses: docker/build-push-action@v6
@@ -54,7 +54,7 @@ jobs:
           context: ./MathApi
           file: ./MathApi/Dockerfile
           push: true
-          tags: ghcr.io/${{ ... env.owner_lc || steps.vars.outputs.owner_lc }}/mathstack-api:latest
+          tags: ghcr.io/${{ steps.vars.outputs.owner_lc }}/mathstack-api:latest
 
       - name: Build and push Client
         uses: docker/build-push-action@v6
@@ -62,7 +62,7 @@ jobs:
           context: ./MathApiClient
           file: ./MathApiClient/Dockerfile
           push: true
-          tags: ghcr.io/${{ ... env.owner_lc || steps.vars.outputs.owner_lc }}/mathstack-client:latest
+          tags: ghcr.io/${{ steps.vars.outputs.owner_lc }}/mathstack-client:latest
 
   run-stack:
     runs-on: ubuntu-latest
