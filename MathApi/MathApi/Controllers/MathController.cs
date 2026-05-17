@@ -108,12 +108,12 @@ public class MathController : ControllerBase
             .ToListAsync();
 
         // 3. REMOVE: If items exist, delete them from the database
-        if (removableItems.Any())
-        {
-            _context.MathCalculations.RemoveRange(removableItems);
-            await _context.SaveChangesAsync();
-            return Ok(new { message = "History cleared successfully" });
-        }
+       if (removableItems.Any())
+{
+    _context.MathCalculations.RemoveRange(removableItems);
+    await _context.SaveChangesAsync();
+    return Ok(removableItems); // <-- Fixes the array assertion constraint
+}
         else
         {
             return NotFound(new Error("No history exists to delete!"));
