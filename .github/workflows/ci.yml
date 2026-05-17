@@ -132,7 +132,8 @@ jobs:
           echo "Client did not respond"
           docker logs math-client || true
           exit 1
-- name: Set up Node.js
+
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
