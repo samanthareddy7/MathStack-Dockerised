@@ -92,7 +92,7 @@ public class MathController : Controller
         return View(new List<MathCalculation>());
     }
 
-    [HttpDelete]
+    [HttpPost]
     public async Task<IActionResult> Clear()
     {
         var token = HttpContext.Session.GetString("MathJWT");
